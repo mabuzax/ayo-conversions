@@ -5,7 +5,7 @@ This project is a microservice designed to handle unit conversions. It allows us
 
 The service supports operations like adding new conversion configurations, retrieving existing conversion configurations, updating existing conversion configurations, deleting conversion configurations, and performing conversions based on the defined configurations.
 
-An VueJS online version showing the front-end to be used by business can be accessed on: [https://www.thegrub.online](https://www.thegrub.online) Source code for the VueJS not provided as was not part of the requirement for this project.
+This repo is strictly for the backend of the application.  A VueJS front-end can be found in the  ```ayo-conversions-frontend ``` repo       
 
 ## Docker Build & Run Instructions
 
@@ -35,7 +35,7 @@ Security is not currently implemented for the endpoint, as it was out of scope f
 
 ## Business Front-end
 
-A front-end for business self-service is provided on: [https://www.thegrub.online](https://www.thegrub.online). Businesses can add/modify and view existing conversion configurations using this front-end.  Can be made available on request.
+A VueJS front-end for business self-service is provided in the ```ayo-conversions-frontend ``` repo. Businesses can add/modify and view existing conversion configurations using this front-end.
 
 ## Monitoring & Support
 
