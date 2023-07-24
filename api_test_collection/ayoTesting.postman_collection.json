@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "799c3a59-9c1a-4ab2-aa23-0dfd7654a70e",
+		"name": "ayoTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8834012"
+	},
+	"item": [
+		{
+			"name": "New Conversion Config - No Addend",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromUnit\": \"fromTestUnit\",\n    \"toUnit\": \"toTestUnit\",\n    \"convertFactor\": 4.28\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"new"
+					],
+					"query": [
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Adds a new conversion config (without an addend) to the DB. "
+			},
+			"response": []
+		},
+		{
+			"name": "New Conversion Config - Addend",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromUnit\": \"fromTestUnitAddend\",\n    \"toUnit\": \"toTestUnitAddend\",\n    \"convertFactor\": 8.28,\n    \"addend\": 21\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"new"
+					],
+					"query": [
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Adds a new conversion config (with addend) to the DB"
+			},
+			"response": []
+		},
+		{
+			"name": "Save Existing Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromUnit\": \"fromTestUnitAddend\",\n    \"toUnit\": \"toTestUnitAddend\",\n    \"convertFactor\": 8.28,\n    \"addend\": 21\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"new"
+					]
+				},
+				"description": "Attempts to create an already existing conversion config"
+			},
+			"response": []
+		},
+		{
+			"name": "Save Invalid Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromUnit\": \"fromTestUnitAddend\",\n    \"toUnit\": \"toTestUnitAddend\",\n    \"convertFactor\": 8.28,\n    \"addend\": -1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"new"
+					]
+				},
+				"description": "Attempts to save a conversion with a negative addend value"
+			},
+			"response": []
+		},
+		{
+			"name": "Show All Conversion Configs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/show/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"show",
+						"all"
+					],
+					"query": [
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Gets and returns all configurations in the DB"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Convesrion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/show?fromUnit=celsius&toUnit=fahrenheit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"show"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "celsius"
+						},
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						},
+						{
+							"key": "toUnit",
+							"value": "fahrenheit"
+						}
+					]
+				},
+				"description": "Returns a specific configuration matching the supplied source unit and target unit"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Non-Existent Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/show?fromUnit=celsius&toUnit=BadUnit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"show"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "celsius"
+						},
+						{
+							"key": "toUnit",
+							"value": "BadUnit"
+						}
+					]
+				},
+				"description": "Try to get a conversion config that doesn't exist"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Unknown Conversion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/show?fromUnit=msile&toUnit=BadUnit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"show"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "msile"
+						},
+						{
+							"key": "toUnit",
+							"value": "BadUnit"
+						}
+					]
+				},
+				"description": "Attempts to get a conversion configuration that is not in the DB"
+			},
+			"response": []
+		},
+		{
+			"name": "Get with Missing Parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/show?fromUnit=celsius",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"show"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "celsius"
+						}
+					]
+				},
+				"description": "Attempts to retrieve a conversion config without a toUnit"
+			},
+			"response": []
+		},
+		{
+			"name": "Undefined Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/convert?fromUnit=mile&toUnit=BadUnit&inputValue=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "mile"
+						},
+						{
+							"key": "toUnit",
+							"value": "BadUnit"
+						},
+						{
+							"key": "inputValue",
+							"value": "10"
+						}
+					]
+				},
+				"description": "Attempts a conversion using a configuration not in the DB"
+			},
+			"response": []
+		},
+		{
+			"name": "Convert Kilometer to Mile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/convert?inputValue=10&fromUnit=kilometer&toUnit=mile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						},
+						{
+							"key": "inputValue",
+							"value": "10"
+						},
+						{
+							"key": "fromUnit",
+							"value": "kilometer"
+						},
+						{
+							"key": "toUnit",
+							"value": "mile"
+						}
+					]
+				},
+				"description": "Converts a kilometer to a mile"
+			},
+			"response": []
+		},
+		{
+			"name": "Convert an Invalid Number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/convert?fromUnit=mile&toUnit=kilometer&inputValue=-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "mile"
+						},
+						{
+							"key": "toUnit",
+							"value": "kilometer"
+						},
+						{
+							"key": "inputValue",
+							"value": "-1"
+						}
+					]
+				},
+				"description": "Attempt to convert a number less than zero"
+			},
+			"response": []
+		},
+		{
+			"name": "Convert with Empty/Null Unit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/convert?fromUnit=&toUnit=kilometer&inputValue=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": ""
+						},
+						{
+							"key": "toUnit",
+							"value": "kilometer"
+						},
+						{
+							"key": "inputValue",
+							"value": "10"
+						}
+					]
+				},
+				"description": "Attempts to convert using an empty/null unit"
+			},
+			"response": []
+		},
+		{
+			"name": "Reverse Conversion - Mile to Kilometer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/convert?inputValue=10&fromUnit=mile&toUnit=kilometer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						},
+						{
+							"key": "inputValue",
+							"value": "10"
+						},
+						{
+							"key": "fromUnit",
+							"value": "mile"
+						},
+						{
+							"key": "toUnit",
+							"value": "kilometer"
+						}
+					]
+				},
+				"description": "Converts a config (configured as kilometer to mile) in reverse (mile to kilometer)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromUnit\": \"fromTestUnitAddend\",\n    \"toUnit\": \"toTestUnitAddend\",\n    \"convertFactor\": 122.28\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"update"
+					]
+				},
+				"description": "Attempts to update a conversion config in the DB"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Non-Existent Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fromUnit\": \"fromTestUnitAddend\",\n    \"toUnit\": \"toTestUnitAddend\",\n    \"convertFactor\": 122.28\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/update?fromUnit=fromTestUnitAddend&toUnit=toTestUnitAddend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"update"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "fromTestUnitAddend"
+						},
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						},
+						{
+							"key": "toUnit",
+							"value": "toTestUnitAddend"
+						}
+					]
+				},
+				"description": "Attempts to edit a non-existent conversion config in the DB"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove a Conversion Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/conversion/remove?fromUnit=celsius&toUnit=fahrenheit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"conversion",
+						"remove"
+					],
+					"query": [
+						{
+							"key": "fromUnit",
+							"value": "celsius"
+						},
+						{
+							"key": "toUnit",
+							"value": "fahrenheit"
+						},
+						{
+							"key": "workspace",
+							"value": "{{workspaceId}}",
+							"description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Removes an existing conversion config from the DB"
+			},
+			"response": []
+		}
+	]
+}
