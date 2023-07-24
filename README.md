@@ -4,6 +4,7 @@
 This project is a microservice designed to handle unit conversions. It allows users to define their conversion factors for different unit pairs and then use these factors to perform conversions.
 
 The service supports operations like adding new conversion configurations, retrieving existing conversion configurations, updating existing conversion configurations, deleting conversion configurations, and performing conversions based on the defined configurations.
+We used a memory DB that gets loaded with initial 3 conversion configs on startup, as there is no need to persist the data for a longer period.  
 
 This repo is strictly for the backend of the application.  A VueJS front-end can be found in the  ```ayo-conversions-frontend ``` repo       
 
@@ -39,4 +40,5 @@ A VueJS front-end for business self-service is provided in the ```ayo-conversion
 
 ## Monitoring & Support
 
+The application logs all system errors to make it easy for the support team to investigate incidents.  In a real application these would be kept in log files that can be retained for a specified period of time.
 The `/actuator/health`, `/actuator/info`, `/actuator/loggers` endpoints can be used by production support to monitor and support the system. Under normal circumstances, these endpoints would require authentication, but this requirement has been waived for this exercise.
